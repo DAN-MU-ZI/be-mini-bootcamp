@@ -1,4 +1,4 @@
-package com.study.bootcamp;
+package com.study.bootcamp.answer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

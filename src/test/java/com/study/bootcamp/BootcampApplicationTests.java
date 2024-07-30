@@ -1,5 +1,9 @@
 package com.study.bootcamp;
 
+import com.study.bootcamp.answer.Answer;
+import com.study.bootcamp.answer.AnswerRepository;
+import com.study.bootcamp.question.Question;
+import com.study.bootcamp.question.QuestionRepository;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
