@@ -4,6 +4,7 @@ import com.study.bootcamp.answer.Answer;
 import com.study.bootcamp.answer.AnswerRepository;
 import com.study.bootcamp.question.Question;
 import com.study.bootcamp.question.QuestionRepository;
+import com.study.bootcamp.question.QuestionService;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -135,5 +136,17 @@ class BootcampApplicationTests {
 
         assertEquals(1, answerList.size());
         assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
+    }
+
+    @Autowired
+    private QuestionService questionService;
+
+    @Test
+    void testJpa() {
+        for (int i = 1; i <= 300; i++) {
+            String subject = String.format("테스트 데이터입니다:[%03d]", i);
+            String content = "내용무";
+            this.questionService.create(subject, content);
+        }
     }
 }
