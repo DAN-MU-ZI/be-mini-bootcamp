@@ -1,5 +1,6 @@
 package com.study.bootcamp.answer;
 
+import com.study.bootcamp.DataNotFoundException;
 import com.study.bootcamp.question.Question;
 import com.study.bootcamp.user.SiteUser;
 import lombok.RequiredArgsConstructor;
@@ -19,5 +20,20 @@ public class AnswerService {
         answer.setQuestion(question);
         answer.setAuthor(author);
         answerRepository.save(answer);
+    }
+
+    public Answer getAnswer(Integer id) {
+        return answerRepository.findById(id)
+                .orElseThrow(() -> new DataNotFoundException("answer not found"));
+    }
+
+    public void modify(Answer answer, String content) {
+        answer.setContent(content);
+        answer.setModifyDate(LocalDateTime.now());
+        this.answerRepository.save(answer);
+    }
+
+    public void delete(Answer answer) {
+        this.answerRepository.delete(answer);
     }
 }
