@@ -1,5 +1,6 @@
 package com.study.bootcamp.user;
 
+import com.study.bootcamp.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,5 +18,10 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(password));
         userRepository.save(user);
         return user;
+    }
+
+    public SiteUser getUser(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new DataNotFoundException("siteuser not found"));
     }
 }

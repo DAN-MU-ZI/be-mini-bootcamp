@@ -1,6 +1,7 @@
 package com.study.bootcamp.question;
 
 import com.study.bootcamp.answer.Answer;
+import com.study.bootcamp.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,4 +27,7 @@ public class Question {
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
+
+    @ManyToOne
+    private SiteUser author;
 }

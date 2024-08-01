@@ -1,6 +1,7 @@
 package com.study.bootcamp.answer;
 
 import com.study.bootcamp.question.Question;
+import com.study.bootcamp.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,4 +23,7 @@ public class Answer {
 
     @ManyToOne
     private Question question;
+
+    @ManyToOne
+    private SiteUser author;
 }
