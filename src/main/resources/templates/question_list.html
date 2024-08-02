@@ -75,5 +75,15 @@
         document.getElementById('page').value = 0;  // 검색버튼을 클릭할 경우 0페이지부터 조회한다.
         document.getElementById('searchForm').submit();
     });
+
+    const search_kw = document.getElementById("search_kw");
+    search_kw.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();  // 엔터키로 인한 기본 폼 제출 방지
+            document.getElementById('kw').value = document.getElementById('search_kw').value;
+            document.getElementById('page').value = 0;  // 검색 시 0페이지부터 조회한다.
+            document.getElementById('searchForm').submit();
+        }
+    });
 </script>
 </html>
