@@ -20,12 +20,13 @@ public class QuestionService {
 
     private final QuestionRepository questionRepository;
 
-    public Page<Question> getList(int page) {
+    public Page<Question> getList(int page, String kw) {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("createDate"));
         Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-        return questionRepository.findAll(pageable);
+        return this.questionRepository.findAllByKeyword(kw, pageable);
     }
+
 
     public Question getQuestion(Integer id) {
         Optional<Question> question = questionRepository.findById(id);
@@ -55,7 +56,7 @@ public class QuestionService {
     public void delete(Question question) {
         this.questionRepository.delete(question);
     }
-    
+
     public void vote(Question question, SiteUser siteUser) {
         question.getVoter().add(siteUser);
         this.questionRepository.save(question);
